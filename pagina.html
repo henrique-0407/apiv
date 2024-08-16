@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/pagina.css">
+    <script>
+        async function somar(){
+            let n1 = document.getElementById('txtnum1').value;
+            let n2 = document.getElementById('txtnum2').value;
+
+            let url = "http://localhost:400/calculadora/" +n1 + '/' + n2
+
+            let response = await fetch(url)
+            let dados = await response.json();
+            
+            document.getElementById('res').innerText = String(dados.soma);
+        }
+    </script>
+</head>
+<body>
+    <h1>consumindo api</h1>
+
+    <label for="">numero1</label>
+    <input type="text" id="txtnum1">
+    <br>
+    <label for="">numero2</label>
+    <input type="text" id="txtnum2">
+
+    <hr>
+
+    <button onclick="somar()">SOmar</button>
+
+    <div id="res">
+        0
+    </div>
+</body>
+</html>
